@@ -1,0 +1,360 @@
+import React, { useState, useEffect } from 'react';
+import { Moon, Sun, ChevronDown, Instagram, Twitter, ExternalLink, Sparkles, TrendingUp, BookOpen, Award, ArrowRight } from 'lucide-react';
+
+const Portfolio = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const [isVisible, setIsVisible] = useState({});
+
+  // Intersection Observer to trigger animations on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Color Palette & Styles based on mode
+  const theme = darkMode
+    ? {
+        bg: 'bg-slate-900',
+        text: 'text-gray-100',
+        accent: 'text-amber-200',
+        card: 'bg-slate-800/80',
+        subText: 'text-gray-300',
+        border: 'border-amber-700/30',
+        gradient: 'from-slate-900 via-slate-800 to-slate-900',
+        button: 'bg-amber-700 hover:bg-amber-600 text-white',
+      }
+    : {
+        bg: 'bg-[#FDFBF7]', // Creamy white
+        text: 'text-[#4A4A4A]', // Dark gray
+        accent: 'text-[#BFA181]', // Muted Gold/Beige
+        card: 'bg-white/80',
+        subText: 'text-[#7A7A7A]',
+        border: 'border-[#E3D5C5]',
+        gradient: 'from-[#FDFBF7] via-[#FFF5E6] to-[#FDFBF7]',
+        button: 'bg-[#BFA181] hover:bg-[#A88B6A] text-white',
+      };
+
+  const fadeInUp = "transition-all duration-1000 transform";
+  const visibleClass = "opacity-100 translate-y-0";
+  const hiddenClass = "opacity-0 translate-y-10";
+
+  return (
+    <div className={`min-h-screen transition-colors duration-500 font-serif ${theme.bg} ${theme.text}`}>
+      
+      {/* Navigation */}
+      <nav className={`fixed w-full z-50 backdrop-blur-md border-b ${theme.border} transition-colors duration-500`}>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className={`text-2xl font-bold tracking-widest ${theme.accent}`}>LUMIÈRE</h1>
+          <div className="flex items-center gap-6">
+            <a href="#about" className="hidden md:block hover:opacity-70 transition-opacity text-sm tracking-widest">STORY</a>
+            <a href="#contents" className="hidden md:block hover:opacity-70 transition-opacity text-sm tracking-widest">CONTENTS</a>
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-full transition-all duration-300 ${darkMode ? 'bg-amber-900/20 text-amber-200' : 'bg-gray-100 text-gray-600'}`}
+              aria-label="Toggle Theme"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section 
+        id="hero" 
+        className={`relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden`}
+      >
+        <div className={`absolute inset-0 bg-gradient-to-br ${theme.gradient} opacity-90 z-0`}></div>
+        {/* Decorative Background Circles */}
+        <div className={`absolute top-20 left-10 w-64 h-64 rounded-full filter blur-3xl opacity-20 ${darkMode ? 'bg-amber-800' : 'bg-pink-200'}`}></div>
+        <div className={`absolute bottom-20 right-10 w-80 h-80 rounded-full filter blur-3xl opacity-20 ${darkMode ? 'bg-purple-900' : 'bg-amber-100'}`}></div>
+
+        <div className="relative z-10 max-w-4xl mx-auto space-y-8 animate-fade-in-up">
+          <div className={`inline-block px-4 py-1 border ${theme.border} rounded-full text-xs tracking-[0.2em] mb-4 uppercase`}>
+            Unlock Your Potential
+          </div>
+          <h2 className={`text-4xl md:text-6xl lg:text-7xl font-medium leading-tight ${theme.text}`}>
+            Threads × AIで<br/>
+            <span className={`${theme.accent} font-serif italic`}>月10万</span>を安定させる
+          </h2>
+          <p className={`text-sm md:text-lg tracking-wider font-sans mt-6 ${theme.subText} max-w-2xl mx-auto leading-loose`}>
+            社畜奴隷でもAIと並走して<br className="md:hidden"/>最高月87万超え達成。<br/>
+            優雅に、賢く、貴方の人生に新しい柱を。
+          </p>
+          
+          <div className="pt-10">
+            <a href="#contents" className={`px-10 py-4 rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 tracking-widest text-sm ${theme.button}`}>
+              View Works
+            </a>
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+          <ChevronDown size={30} />
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 px-6 relative">
+        <div className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center transition-all duration-1000 ${isVisible.about ? visibleClass : hiddenClass}`}>
+          {/* Image Placeholder */}
+          <div className="relative group">
+            <div className={`absolute inset-0 transform translate-x-4 translate-y-4 border border-current opacity-30 rounded-tl-[4rem] rounded-br-[4rem] transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 ${theme.accent}`}></div>
+            <div className={`relative h-[500px] w-full bg-cover bg-center rounded-tl-[4rem] rounded-br-[4rem] shadow-2xl overflow-hidden`} 
+                 style={{backgroundImage: 'url("https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop")'}}>
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
+            </div>
+          </div>
+
+          <div className="space-y-8">
+            <div className="space-y-2">
+              <span className={`text-xs tracking-[0.3em] font-bold uppercase ${theme.accent}`}>My Story</span>
+              <h3 className="text-3xl md:text-4xl font-serif">「時間」という<br/>最高の贅沢を手に入れる</h3>
+            </div>
+            
+            <div className={`space-y-6 font-sans leading-loose ${theme.subText}`}>
+              <p>
+                かつては朝から晩まで会社に縛られる、いわゆる「社畜」でした。
+                自分の時間を切り売りし、疲弊する毎日。
+                「もっと自分らしく、優雅に生きたい」その一心で出会ったのがAIとThreadsでした。
+              </p>
+              <p>
+                特別な才能があったわけではありません。
+                ただ、AIという強力なパートナーと並走することで、
+                月10万、30万、そして最高月87万という収益を生み出すことができました。
+              </p>
+              <p>
+                現在は、そのノウハウを体系化し、
+                「忙しい女性でも品格を保ちながら稼ぐ」方法を発信しています。
+                貴方の人生にも、新しい収入の柱を建ててみませんか？
+              </p>
+            </div>
+
+            <div className="flex gap-4 pt-4">
+              <SocialButton icon={<Twitter size={20}/>} label="Threads" />
+              <SocialButton icon={<Instagram size={20}/>} label="Instagram" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trajectory (History) Section */}
+      <section id="trajectory" className={`py-24 px-6 ${darkMode ? 'bg-slate-800/50' : 'bg-stone-50'}`}>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16 space-y-4">
+            <h3 className="text-3xl font-serif">Trajectory</h3>
+            <p className={`text-sm tracking-widest ${theme.subText}`}>これまでの軌跡</p>
+          </div>
+
+          <div className={`relative border-l-2 ${theme.border} ml-6 md:ml-0 space-y-12`}>
+            <TimelineItem 
+              year="2022" 
+              title="会社員としての限界" 
+              desc="残業月80時間超え。心身ともに疲弊し、副業を模索し始める。"
+              icon={<BookOpen size={20} />}
+              theme={theme}
+              isVisible={isVisible.trajectory}
+            />
+            <TimelineItem 
+              year="2023.04" 
+              title="AI × Threads との出会い" 
+              desc="文章作成が苦手でもAIを使えば発信できることに気づく。毎日投稿を開始。"
+              icon={<Sparkles size={20} />}
+              theme={theme}
+              isVisible={isVisible.trajectory}
+            />
+            <TimelineItem 
+              year="2023.10" 
+              title="月収10万円達成" 
+              desc="独自の世界観が評価され、アフィリエイト報酬が安定化。0→1を達成。"
+              icon={<TrendingUp size={20} />}
+              theme={theme}
+              isVisible={isVisible.trajectory}
+            />
+            <TimelineItem 
+              year="Current" 
+              title="最高月収87万円超え" 
+              desc="コンテンツ販売を開始。多くの生徒さんにノウハウを還元中。"
+              icon={<Award size={20} />}
+              theme={theme}
+              isVisible={isVisible.trajectory}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* My Contents Section */}
+      <section id="contents" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 space-y-4">
+            <span className={`text-xs tracking-[0.3em] font-bold uppercase ${theme.accent}`}>Original Works</span>
+            <h3 className="text-3xl md:text-4xl font-serif">My Contents</h3>
+            <p className={`text-sm ${theme.subText}`}>私の知識と経験を凝縮したコンテンツ</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <ContentCard 
+              title="Threads × AI マネタイズの教科書"
+              category="Brain / Note"
+              desc="初心者でも初月から収益化を目指せる、具体的なプロンプトと運用フローを完全解説。"
+              image="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop"
+              theme={theme}
+              delay="0"
+              isVisible={isVisible.contents}
+            />
+            <ContentCard 
+              title="【悪用厳禁】魅了する文章術"
+              category="Tips"
+              desc="AIっぽさを消し、読み手の感情を揺さぶるライティングテクニック集。"
+              image="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1973&auto=format&fit=crop"
+              theme={theme}
+              delay="200"
+              isVisible={isVisible.contents}
+            />
+            <ContentCard 
+              title="0→1突破 個別コンサルティング"
+              category="Consulting"
+              desc="あなたの強みを発掘し、オーダーメイドの収益化ロードマップを作成します。"
+              image="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=2069&auto=format&fit=crop"
+              theme={theme}
+              delay="400"
+              isVisible={isVisible.contents}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Recommended Section */}
+      <section id="recommended" className={`py-24 px-6 ${darkMode ? 'bg-slate-900' : 'bg-[#F9F7F2]'}`}>
+        <div className="max-w-6xl mx-auto">
+           <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b pb-4 border-gray-200 dark:border-gray-700">
+            <div className="space-y-2">
+              <span className={`text-xs tracking-[0.3em] font-bold uppercase ${theme.accent}`}>Selection</span>
+              <h3 className="text-3xl font-serif">Recommended</h3>
+            </div>
+            <p className={`text-sm mt-4 md:mt-0 ${theme.subText}`}>私が自信を持っておすすめするツール・教材</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <RecommendationItem 
+              title="AIライティングツール「Claude 3」"
+              desc="自然な日本語生成において最強のAI。私の投稿作成の9割はこれを使用しています。"
+              tag="Tool"
+              theme={theme}
+            />
+             <RecommendationItem 
+              title="画像生成AI「Midjourney」"
+              desc="高貴な世界観を作るための画像素材はこれで作れます。プロンプト集も配布中。"
+              tag="Creative"
+              theme={theme}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className={`py-12 px-6 border-t ${theme.border} text-center`}>
+        <div className="max-w-4xl mx-auto space-y-8">
+          <h2 className={`text-2xl font-bold tracking-widest ${theme.accent}`}>LUMIÈRE</h2>
+          <div className="flex justify-center gap-8">
+            <a href="#" className={`hover:${theme.accent} transition-colors text-sm tracking-widest`}>THREADS</a>
+            <a href="#" className={`hover:${theme.accent} transition-colors text-sm tracking-widest`}>TWITTER</a>
+            <a href="#" className={`hover:${theme.accent} transition-colors text-sm tracking-widest`}>NOTE</a>
+          </div>
+          <p className={`text-xs ${theme.subText} tracking-wider`}>
+            © 2024 Lumière Portfolio. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
+      
+      {/* Global CSS for custom animations (since Tailwind config isn't accessible) */}
+      <style jsx global>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+          animation: fadeInUp 1s ease-out forwards;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+/* --- Sub Components --- */
+
+const SocialButton = ({ icon, label }) => (
+  <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 text-sm tracking-wider">
+    {icon}
+    <span>{label}</span>
+  </button>
+);
+
+const TimelineItem = ({ year, title, desc, icon, theme, isVisible }) => (
+  <div className={`relative md:pl-8 pl-8 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+    <div className={`absolute -left-[9px] top-0 p-1 rounded-full ${theme.bg} border ${theme.border}`}>
+      <div className={`w-2 h-2 rounded-full ${theme.accent.replace('text-', 'bg-')}`}></div>
+    </div>
+    <div className="flex flex-col md:flex-row gap-4 md:items-start group">
+      <div className={`min-w-[100px] font-serif italic text-lg ${theme.accent}`}>{year}</div>
+      <div className="space-y-2 pb-12">
+        <div className="flex items-center gap-2">
+          <span className={`${theme.subText} opacity-70`}>{icon}</span>
+          <h4 className={`text-xl font-medium ${theme.text}`}>{title}</h4>
+        </div>
+        <p className={`text-sm leading-relaxed ${theme.subText}`}>{desc}</p>
+      </div>
+    </div>
+  </div>
+);
+
+const ContentCard = ({ title, category, desc, image, theme, delay, isVisible }) => (
+  <div 
+    className={`group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-1000 ${theme.card} hover:-translate-y-2`}
+    style={{ transitionDelay: `${delay}ms`, opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)' }}
+  >
+    <div className="h-48 overflow-hidden">
+      <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+    </div>
+    <div className="p-8 space-y-4">
+      <span className={`text-xs font-bold tracking-wider uppercase ${theme.accent}`}>{category}</span>
+      <h4 className={`text-xl font-serif ${theme.text}`}>{title}</h4>
+      <p className={`text-sm leading-relaxed ${theme.subText}`}>{desc}</p>
+      <div className="pt-4 flex items-center gap-2 text-sm font-medium cursor-pointer hover:opacity-70 transition-opacity">
+        Read More <ArrowRight size={16} />
+      </div>
+    </div>
+  </div>
+);
+
+const RecommendationItem = ({ title, desc, tag, theme }) => (
+  <div className={`flex items-start gap-4 p-6 rounded-xl border ${theme.border} ${theme.card} hover:shadow-lg transition-all duration-300`}>
+    <div className="flex-1 space-y-2">
+      <div className="flex justify-between items-center">
+        <h4 className={`text-lg font-medium ${theme.text}`}>{title}</h4>
+        <span className={`text-[10px] px-2 py-1 rounded border ${theme.border} ${theme.subText}`}>{tag}</span>
+      </div>
+      <p className={`text-sm ${theme.subText}`}>{desc}</p>
+    </div>
+    <ExternalLink size={18} className={`${theme.accent} mt-1`} />
+  </div>
+);
+
+export default Portfolio;
