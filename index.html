@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600;700&family=Jost:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;600;700&family=Jost:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -403,7 +403,7 @@
                     {/* Loader */}
                     <div className={`loader-overlay ${!loading ? 'hidden' : ''}`}>
                         <div className="text-center">
-                            <h1 className="text-6xl md:text-8xl font-script text-white tracking-widest opacity-0 animate-[fadeInUp_1s_forwards]">
+                            <h1 className="text-6xl md:text-8xl font-elegant italic text-white tracking-widest opacity-0 animate-[fadeInUp_1s_forwards]">
                                 Kenshiro
                             </h1>
                         </div>
@@ -412,8 +412,8 @@
                     {/* Navigation */}
                     <nav className="fixed w-full z-40 top-0 left-0 mix-blend-difference text-white">
                         <div className="max-w-[1440px] mx-auto px-6 h-24 flex justify-between items-center">
-                            {/* Updated Header Font */}
-                            <a href="#" className="text-4xl md:text-5xl font-script tracking-wide text-white hover-target">
+                            {/* Updated Header Font: High Visibility Luxury Elegant */}
+                            <a href="#" className="text-3xl md:text-4xl font-elegant italic tracking-[0.05em] text-white hover-target font-bold">
                                 Kenshiro Portfolio
                             </a>
                             <div className="flex items-center gap-8">
@@ -440,35 +440,39 @@
 
                         <div className="relative z-10 w-full max-w-[1440px] px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
                             <div className="md:col-span-12 lg:col-span-10 lg:col-start-2">
-                                <div className="reveal-text">
-                                    {/* Reorganized Hero Text for Better Balance */}
-                                    <div className="mb-10">
-                                        <p className="font-luxury text-xl md:text-2xl tracking-[0.4em] text-white/90 mb-4 ml-1">
-                                            THREADS <span className="text-brand-gold">×</span> AI
-                                        </p>
-                                        <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-6">
-                                            <h1 className="text-7xl md:text-9xl font-serif font-bold text-gradient-gold leading-none tracking-tight text-shadow-sm">
-                                                月10万
-                                            </h1>
-                                            <span className="text-3xl md:text-4xl font-serif font-light text-white/90 mb-3 tracking-widest">
-                                                を叶える
-                                            </span>
-                                        </div>
+                                <div className="reveal-text text-center md:text-left">
+                                    {/* Band removed, text size reduced */}
+                                    <div className="mb-8 inline-block">
+                                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-luxury font-bold text-white leading-none tracking-[0.1em] drop-shadow-2xl">
+                                            THREADS<span className="text-brand-gold mx-3 font-serif font-light">×</span>AI
+                                        </h1>
+                                    </div>
+                                    
+                                    <div className="mt-2 flex flex-col md:flex-row md:items-end gap-2 md:gap-6 pl-2">
+                                        <span className="text-gradient-gold font-serif font-bold text-6xl md:text-8xl lg:text-9xl tracking-wider drop-shadow-xl">
+                                            月10万
+                                        </span>
+                                        <span className="text-white/90 font-serif font-light text-2xl md:text-3xl lg:text-4xl tracking-[0.2em] mb-3 ml-2">
+                                            を叶える
+                                        </span>
                                     </div>
                                 </div>
-                                <div className="max-w-2xl fade-up delay-300 mt-12">
-                                    <div className="h-[1px] w-24 bg-brand-gold mb-10"></div>
+                                <div className="max-w-2xl fade-up delay-300 mt-12 text-center md:text-left mx-auto md:mx-0">
+                                    <div className="h-[1px] w-24 bg-brand-gold mb-10 mx-auto md:mx-0"></div>
                                     
                                     <div className="mb-12">
                                         <p className="text-white font-serif text-2xl md:text-3xl leading-relaxed tracking-widest font-light text-shadow-sm">
                                             貴方の人生に<br/>
-                                            「安心」という名の新しい柱を。
+                                            <span className="relative inline-block mt-2">
+                                                「安心」という名の新しい柱を。
+                                                <span className="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-80"></span>
+                                            </span>
                                         </p>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-6">
-                                        {/* Refined Buttons */}
-                                        <a href="https://note.com/kenshiro0909" target="_blank" className="hover-target px-12 py-4 bg-white text-black text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-gold hover:text-white transition-colors duration-300 shadow-lg">
+                                    <div className="flex flex-wrap gap-6 justify-center md:justify-start">
+                                        {/* NOTE Button: Transparent with Note color border */}
+                                        <a href="https://note.com/kenshiro0909" target="_blank" className="hover-target px-12 py-4 border border-brand-note text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-note hover:text-white transition-all duration-300 shadow-lg bg-transparent">
                                             NOTE
                                         </a>
                                         <a href="https://lin.ee/Hmq3J35" target="_blank" className="hover-target px-12 py-4 border border-brand-line text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-line hover:text-white transition-all duration-300 shadow-lg bg-transparent">
@@ -496,7 +500,7 @@
                                     desc="【購入者様：4ヶ月で50万達成】大手エンジニアとの共作。開始14日で成果報告14名以上。30個以上のGPTsが完全並走サポート"
                                     image="https://github.com/user-attachments/assets/a9a94028-2d85-4d37-9c32-e0ec2df533cf"
                                     link="https://brain-market.com/u/hokuto88/a/byIjMyIjMgoTZsNWa0JXY"
-                                    note="AITHERAISE"
+                                    
                                     aspectRatio="aspect-video"
                                 />
                                 <ContentCard 
@@ -505,7 +509,7 @@
                                     desc="孤独な作業を終わらせる、熱量の高い仲間との環境。挫折させない仕組みと基準値を高め合う場所で、楽しみながら成果への最短ルートを走り抜ける。"
                                     image="https://github.com/user-attachments/assets/9268ab48-d727-4b8a-bc82-d1c89abaefa4"
                                     link="https://note.com/kenshiro0909/n/n22e97c1439c6"
-                                    note="ケンシプ"
+                                    
                                     aspectRatio="aspect-video"
                                 />
                                 <ContentCard 
@@ -514,7 +518,7 @@
                                     desc="CANVA×AIでサムネを思いのままに！noteが売れないのはサムネが原因"
                                     image="https://github.com/user-attachments/assets/43b0863a-69fd-4ca4-b222-5fb650c1afcf"
                                     link="https://brain-market.com/u/hokuto88/a/b2EzN1IjMgoTZsNWa0JXY" 
-                                    note="Noteraise"
+                                    
                                     aspectRatio="aspect-video"
                                   />
                             </div>
@@ -545,7 +549,7 @@
                                             desc="Threadsで成果を出している人で持っていない人はゼロ。講座級のノウハウ。"
                                             image="https://github.com/user-attachments/assets/7ece8087-937b-4f9c-bc51-e86b89544eb3"
                                             link="https://kenshiro-sidejob.site/new-threads/"
-                                            note="シンスレッズ"
+                                            
                                             aspectRatio="aspect-video"
                                         />
                                     </div>
@@ -561,6 +565,7 @@
 
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
                                 <div className="lg:col-span-5 relative fade-up">
+                                    {/* Image with Shadow for Depth */}
                                     <div className="img-mask-container aspect-[9/16] w-full max-w-md mx-auto z-10 relative">
                                         <div className="img-mask-overlay"></div>
                                         <img src="https://github.com/user-attachments/assets/b36ad80f-edf2-48a8-8fb7-2961dc9b5031" alt="kenshiro" className="img-mask-img object-contain" />
@@ -591,10 +596,11 @@
                                         <a href="https://www.threads.net/@kenshiro_ai.fukugyo" target="_blank" className="hover-target flex items-center gap-2 px-8 py-4 bg-[#101010] border border-brand-gold/30 text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-gold hover:text-black transition-all duration-300 shadow-lg">
                                             <ThreadsIcon size={18} /> Threads
                                         </a>
+                                        {/* Added Note Button */}
                                         <a href="https://note.com/kenshiro0909" target="_blank" className="hover-target flex items-center gap-2 px-8 py-4 bg-[#101010] border border-brand-note/50 text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-note hover:text-white transition-all duration-300 shadow-lg">
                                             Note
                                         </a>
-                                        <a href="https://lin.ee/Hmq3J35" target="_blank" className="hover-target flex items-center gap-2 px-8 py-4 bg-transparent border border-brand-line text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-line hover:text-white transition-all duration-300 shadow-lg">
+                                        <a href="https://lin.ee/Hmq3J35" target="_blank" className="hover-target flex items-center gap-2 px-8 py-4 bg-brand-line border border-transparent text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-white hover:text-brand-line hover:border-brand-line transition-all duration-300 shadow-lg">
                                             OFFICIAL LINE <ArrowRight size={14} />
                                         </a>
                                     </div>
@@ -669,7 +675,10 @@
                     <footer className="py-24 px-6 bg-brand-black text-white border-t border-white/10">
                         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                             <div className="text-center md:text-left">
-                                <h2 className="text-6xl font-script font-bold tracking-wide mb-4 text-white">Kenshiro Portfolio</h2>
+                                {/* Updated Footer Font */}
+                                <h2 className="text-3xl md:text-4xl font-elegant italic tracking-[0.05em] font-bold text-white mb-4">
+                                    Kenshiro Portfolio
+                                </h2>
                                 <p className="text-xs font-sans opacity-40 tracking-widest">
                                     © 2024 Kenshiro Portfolio. All Rights Reserved.
                                 </p>
