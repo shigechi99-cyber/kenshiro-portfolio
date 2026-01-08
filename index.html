@@ -47,7 +47,8 @@
                         'spin-slow': 'spin 12s linear infinite',
                         'shimmer': 'shimmer 2s linear infinite',
                         'fade-in-slow': 'fadeIn 2s ease-out forwards',
-                        'pan-slow': 'pan 15s ease-in-out infinite alternate',
+                        'pan-mobile': 'pan 8s ease-in-out infinite alternate',   // Fast for Mobile
+                        'pan-desktop': 'pan 15s ease-in-out infinite alternate', // 15s for PC
                     },
                     keyframes: {
                         shimmer: {
@@ -437,8 +438,8 @@
                     {/* Hero Section */}
                     <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
                         <div className="absolute inset-0 z-0">
-                            {/* Animated Background (Pan Slow) */}
-                            <div className="w-full h-full bg-cover bg-center animate-pan-slow" 
+                            {/* Animated Background (Fast on mobile, Slow on PC) */}
+                            <div className="w-full h-full bg-cover bg-center animate-pan-mobile md:animate-pan-desktop" 
                                  style={{backgroundImage: 'url("https://github.com/user-attachments/assets/6551bdea-2539-4288-9a2e-27543c0ebd72")'}}>
                             </div>
                             <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
@@ -480,11 +481,11 @@
                                     </div>
 
                                     <div className="flex flex-wrap gap-6 justify-center md:justify-start">
-                                        {/* NOTE Button: Transparent with White border -> Hover Note Color */}
+                                        {/* NOTE Button: Transparent with Note color border */}
                                         <a href="https://note.com/kenshiro0909" target="_blank" className="hover-target px-12 py-4 border border-white text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg bg-transparent">
                                             NOTE
                                         </a>
-                                        {/* OFFICIAL LINE Button: Transparent with White border -> Hover Line Color */}
+                                        {/* OFFICIAL LINE Button: Transparent with Line color border */}
                                         <a href="https://lin.ee/Hmq3J35" target="_blank" className="hover-target px-12 py-4 border border-white text-white text-xs font-bold font-en uppercase tracking-[0.25em] hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg bg-transparent">
                                             OFFICIAL LINE
                                         </a>
@@ -501,7 +502,7 @@
                     {/* Contents Section */}
                     <section id="contents" className="py-32 px-6 bg-[#121212] relative">
                         <div className="max-w-[1200px] mx-auto">
-                            <SectionHeading number="01" title="My Contents" subtitle="～私の知識と経験を凝縮した、人生を変える武器たち～" />
+                            <SectionHeading number="01" title="My Contents" subtitle="～僕の知識と経験を凝縮した、人生を変える武器たち～" />
 
                             {/* Changed to flex-col for mobile to stack vertically instead of scroll */}
                             <div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 md:gap-y-16">
@@ -511,7 +512,6 @@
                                     desc="【購入者様：4ヶ月で50万達成】大手エンジニアとの共作。開始14日で成果報告14名以上。30個以上のGPTsが完全並走サポート"
                                     image="https://github.com/user-attachments/assets/a9a94028-2d85-4d37-9c32-e0ec2df533cf"
                                     link="https://brain-market.com/u/hokuto88/a/byIjMyIjMgoTZsNWa0JXY"
-                                
                                     aspectRatio="aspect-video"
                                 />
                                 <ContentCard 
@@ -520,16 +520,14 @@
                                     desc="孤独な作業を終わらせる、熱量の高い仲間との環境。挫折させない仕組みと基準値を高め合う場所で、楽しみながら成果への最短ルートを走り抜ける。"
                                     image="https://github.com/user-attachments/assets/9268ab48-d727-4b8a-bc82-d1c89abaefa4"
                                     link="https://note.com/kenshiro0909/n/n22e97c1439c6"
-                                
                                     aspectRatio="aspect-video"
                                 />
                                 <ContentCard 
                                     number="03"
                                     title="NOTERAISE"
-                                    desc="CANVA×AIでサムネを思いのままに！noteが売れないのはサムネが原因"
+                                    desc="AI×Canvaで『売れるサムネ』を自在に操る。クリック率を最大化し、あなたのnoteを収益化の柱へ。"
                                     image="https://github.com/user-attachments/assets/43b0863a-69fd-4ca4-b222-5fb650c1afcf"
                                     link="https://brain-market.com/u/hokuto88/a/b2EzN1IjMgoTZsNWa0JXY" 
-                                
                                     aspectRatio="aspect-video"
                                   />
                             </div>
@@ -545,7 +543,7 @@
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="md:col-span-1">
                                         <h3 className="text-2xl font-serif mb-6 leading-relaxed">
-                                            AITHRAISEとの相性抜群。<br/>
+                                            <span className="text-brand-gold font-bold">AITHRAISEとの相性抜群。</span><br/>
                                             迷いなく進むためのバイブル。
                                         </h3>
                                         <p className="text-sm opacity-60 font-sans leading-7 mb-8">
@@ -557,10 +555,9 @@
                                         <ContentCard 
                                             number="REC"
                                             title="シンスレッズ"
-                                            desc="Threadsで成果を出している人で持っていない人はゼロ。講座級のノウハウ。"
+                                            desc="Threadsで成果を出している人で持っていない人はほぼゼロといっても過言ではないです。講座級のノウハウが魅力！。"
                                             image="https://github.com/user-attachments/assets/7ece8087-937b-4f9c-bc51-e86b89544eb3"
                                             link="https://kenshiro-sidejob.site/new-threads/"
-                                        
                                             aspectRatio="aspect-video"
                                         />
                                     </div>
@@ -597,7 +594,8 @@
                                         </h3>
                                         <p className="font-sans text-sm leading-8 opacity-70">
                                             はじめまして、ケンシロウです。<br/>
-                                            僕の人生は、順風満帆とは程遠いものでした。店長として懸命に働いた職場からの理不尽な解雇。<br/>
+                                            僕の人生は、順風満帆とは程遠いものでした。<br/>
+                                            店長として懸命に働いた職場からの理不尽な解雇。<br/>
                                             失意の中、Uber Eatsでひたすらペダルを漕ぎ、日銭を稼ぐ日々。
                                         </p>
                                         <p className="font-sans text-sm leading-8 opacity-70">
@@ -614,12 +612,12 @@
                                             Threads
                                         </a>
                                         {/* Note Button */}
-                                        <a href="https://note.com/kenshiro0909" target="_blank" className="hover-target flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg">
+                                        <a href="https://note.com/kenshiro0909" target="_blank" className="hover-target flex items-center justify-center px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-note hover:border-brand-note hover:text-white transition-all duration-300 shadow-lg">
                                             Note
                                         </a>
                                         {/* LINE Button */}
-                                        <a href="https://lin.ee/Hmq3J35" target="_blank" className="hover-target flex items-center gap-2 px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg">
-                                            LINE <ArrowRight size={14} />
+                                        <a href="https://lin.ee/Hmq3J35" target="_blank" className="hover-target flex items-center justify-center px-8 py-4 bg-transparent border border-white text-white text-xs font-bold font-en uppercase tracking-widest hover:bg-brand-line hover:border-brand-line hover:text-white transition-all duration-300 shadow-lg">
+                                            LINE
                                         </a>
                                     </div>
                                 </div>
